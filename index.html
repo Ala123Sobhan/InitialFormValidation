@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FORM VALIDATION</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function validate() {
+        var uname = document.getElementById("uname");
+        var pass = document.getElementById("pass");
+
+        const username = uname.value.trim();
+        const password = pass.value.trim();
+
+        if (username === "") {
+         // alert("blank username");
+          uname.style.border = "solid 3px red";
+          document.getElementById("label1").style.display = "inline";
+
+          return false;
+        } else if (password === "") {
+         // alert("blank password");
+          pass.style.border = "solid 3px red";
+          document.getElementById("label2").style.display = "inline";
+
+          return false;
+        } else if (password.length < 5) {
+          pass.style.border = "solid 3px red";
+          document.getElementById("label3").style.display = "inline";
+
+          return false;
+        } else {
+          alert("Going to a new page!");
+          document.getElementById("f1").action = "message.html";
+
+          return true;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form id="f1" onsubmit="return validate();">
+      <div id="header">
+        <h2>Create an account</h2>
+      </div>
+      <div id="form-control">
+        <label>Username: </label>
+        <input id="uname" placeholder="username" type="text" />
+
+        <label id="label1" style="color: red; display: none">INVALID</label>
+
+        <br /><br />
+        <label>PassWord: </label>
+        <input id="pass" placeholder="password" type="password" />
+
+        <label id="label2" style="color: red; display: none">INVALID</label>
+        <label id="label3" style="color: red; display: none">Too short password</label>
+        <br /><br />
+
+        <button type="submit">SUBMIT</button>
+      </div>
+    </form>
+  </body>
+</html>
